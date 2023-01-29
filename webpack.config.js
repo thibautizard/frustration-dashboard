@@ -1,8 +1,4 @@
 const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const htmlPlugin = new HtmlWebPackPlugin({
-  template: "./index.html",
-});
 
 module.exports = {
   mode: "development",
@@ -39,5 +35,4 @@ module.exports = {
     static: path.join(__dirname, "build"),
     port: 4000,
   },
-  plugins: [htmlPlugin],
 };

@@ -18,6 +18,8 @@ const Main = styled.main`
   background: #fff200;
   padding: 40px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default Layout;

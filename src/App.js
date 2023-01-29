@@ -12,6 +12,7 @@ import Home from "./pages/Paiements";
 import Layout from "./Layout";
 import Auth from "./pages/Authentification";
 import Account from "./pages/Account";
+import Accueil from "./pages/Accueil";
 import NoAccesAuthorized from "./pages/AuthentificationError";
 import "./global.css";
 
@@ -19,7 +20,7 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <Accueil />,
     },
     {
       path: "about",

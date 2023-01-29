@@ -13,7 +13,7 @@ function Root() {
   return (
     <>
       <Header />
-      {session ? (
+      {!session ? (
         <Layout>
           <Outlet />
         </Layout>
@@ -26,8 +26,9 @@ function Root() {
 
 const Header = styled(({ className }) => (
   <header className={className}>
-    <Title>Frustration Dashboard</Title>
-    <Version>0.1</Version>
+    <Title>
+      Frustration Dashboard <Version>0.1</Version>
+    </Title>
     <Avertissement />
   </header>
 ))`
@@ -48,13 +49,21 @@ const Title = styled(({ className, children }) => (
   font-family: Bebas Neue;
   font-size: clamp(12px, 10vw, 70px);
   text-transform: uppercase;
+  position: relative;
 `;
 
 const Version = styled(({ className, children }) => (
   <small className={className}>v.{children}</small>
 ))`
-  margin-left: 10px;
+  font-size: 1rem;
+  font-family: Poppins;
+  font-weight: 200;
+  text-transform: lowercase;
+  position: absolute;
+  bottom: 0.8rem;
+  translate: 10px 0;
 `;
+
 
 const Avertissement = styled(({ className, children }) => (
   <div className={className}>

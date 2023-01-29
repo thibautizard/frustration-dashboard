@@ -13,7 +13,7 @@ function Root() {
   return (
     <>
       <Header />
-      {!session ? (
+      {session ? (
         <Layout>
           <Outlet />
         </Layout>

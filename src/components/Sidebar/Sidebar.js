@@ -58,7 +58,10 @@ const Sidebar = styled(({ className }) => {
 const Badge = styled(({ className, name, image_url }) => (
   <div className={className}>
     <img src={image_url} />
-    <span>{name}</span>
+    <div className="infos">
+      <span>{name || "Rédaction"}</span>
+      <small>ADMIN</small>
+    </div>
   </div>
 ))`
   border: 1px solid var(--bg-color-hover);
@@ -73,8 +76,20 @@ const Badge = styled(({ className, name, image_url }) => (
     border-radius: 100%;
     height: 33px;
   }
-  span {
-    font-weight: 600;
+
+  .infos {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 1rem;
+      line-height: 1rem;
+      font-weight: 600;
+    }
+
+    small {
+      font-size: 0.5rem;
+    }
   }
 `;
 

@@ -4,6 +4,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/root";
 import Paiements from "./pages/Paiements";
 import Accueil from "./pages/Accueil";
+import Audiences from "./pages/Audiences";
+import Laboratoire from "./pages/Laboratoire";
 import Error from "./pages/Error";
 import "./global.css";
 
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "/paiements",
         element: <Paiements />,
+      },
+      {
+        path: "/audiences",
+        element: <Audiences />,
+      },
+      {
+        path: "/laboratoire",
+        element: <Laboratoire />,
       },
     ],
   },

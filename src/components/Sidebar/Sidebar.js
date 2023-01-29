@@ -24,7 +24,11 @@ const Sidebar = styled(({ className }) => {
       </Menus>
       <Badge
         name={user?.first_name}
-        image_url={`/img/pp/${user?.id}.${user?.image_extension}`}
+        image_url={
+          user
+            ? require(`../../img/pp/${user?.id}.${user?.image_extension}`)
+            : require("./pp_redaction.png")
+        }
       />
     </aside>
   );

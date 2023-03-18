@@ -1,12 +1,20 @@
+// Libraries
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+// Root
 import Root from "./routes/root";
+
+// Pages
 import Paiements from "./pages/Paiements";
 import Accueil from "./pages/Accueil";
 import Audiences from "./pages/Audiences";
 import Laboratoire from "./pages/Laboratoire";
+import Passwords from "./pages/Passwords";
 import Error from "./pages/Error";
+
+//Styles
 import "./global.css";
 
 const router = createBrowserRouter([
@@ -26,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/audiences",
         element: <Audiences />,
+      },
+      {
+        path: "/passwords",
+        element: <Passwords />,
       },
       {
         path: "/laboratoire",

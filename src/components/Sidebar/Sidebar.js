@@ -27,7 +27,6 @@ const Sidebar = styled(({ className }) => {
         image_url={
           user
             ? require(`../../img/pp/${user?.id}.${user?.image_extension}`)
-
             : require("./pp_redaction.png")
         }
       />
@@ -45,7 +44,7 @@ const Sidebar = styled(({ className }) => {
   box-sizing: border-box;
   box-shadow: var(--container-shadow);
   font-family: Poppins;
-  width: 200px;
+  width: 220px;
   height: 100%;
   padding: 0 15px;
   padding-bottom: 20px;

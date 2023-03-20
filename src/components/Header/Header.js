@@ -27,7 +27,7 @@ const Title = styled(({ className, children }) => (
     <Link to="/">{children}</Link>
   </h1>
 ))`
-  font-size: clamp(12px, 10vw, 70px);
+  font-size: clamp(12px, 3.5vw, 70px);
   font-family: Bebas Neue;
   text-transform: uppercase;
 
@@ -49,16 +49,16 @@ const Avertissement = styled(({ className, children }) => (
   </div>
 ))`
   position: absolute;
-  bottom: -5px;
-  right: 5px;
+  right: clamp(3px, 0.1vw, 5px);
+  top: 50%;
   padding: 7px 12px;
-  translate: 0 100%;
+  translate: 0 -50%;
   background: black;
   font-weight: 600;
   display: flex;
   align-items: center;
-  border: 2px solid #fff200;
   gap: 10px;
+  font-size: clamp(10px, 1vw, 20px);
 `;
 
 export default Header;

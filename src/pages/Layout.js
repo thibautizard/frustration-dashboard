@@ -16,7 +16,7 @@ const Layout = styled(({ className, children }) => (
 
 const Main = styled.main`
   background: #fff200;
-  padding: 40px;
+  padding: 20px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;

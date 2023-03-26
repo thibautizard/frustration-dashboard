@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/root";
 
 // Pages
-import Paiements from "./pages/Paiements";
+import Revenus from "./pages/Revenus";
 import Accueil from "./pages/Accueil";
 import Audiences from "./pages/Audiences";
 import Laboratoire from "./pages/Laboratoire";
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <Accueil />,
       },
       {
-        path: "/paiements",
-        element: <Paiements />,
+        path: "/revenus",
+        element: <Revenus />,
       },
       {
         path: "/audiences",

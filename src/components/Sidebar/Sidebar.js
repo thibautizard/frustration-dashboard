@@ -3,7 +3,8 @@ import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import pp_redaction from "./pp_redaction.png";
-import { useSession } from "../../hooks/useSession";
+import useSession from "../../hooks/useSession";
+import useEvents from "../../hooks/useEvents";
 import menus from "./menus.json";
 import badges from "./badges.json";
 
@@ -14,6 +15,8 @@ const Sidebar = styled(({ className }) => {
     user = badges.filter((badge) => badge.id === session.user.id)[0];
   }
 
+  const [events, setEvents] = useEvents();
+
   return (
     <aside className={className}>
       {/* <Arrow /> */}
@@ -22,6 +25,7 @@ const Sidebar = styled(({ className }) => {
           <Menu icon={icon} text={text} link={link} index={index} />
         ))}
       </Menus>
+      <UpdateNotification date={events[0]?.date} />
       <Badge
         name={user?.first_name}
         image_url={
@@ -51,6 +55,36 @@ const Sidebar = styled(({ className }) => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+const UpdateNotification = styled(({ className, date }) => {
+  function formatDate(dateString) {
+    if (dateString) {
+      const date = new Date(dateString);
+      const options = {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC",
+      };
+
+      const formatter = new Intl.DateTimeFormat("fr-FR", options);
+      const formattedDate = formatter
+        .format(date)
+        .replace(/\b\w/g, (l) => l.toUpperCase());
+      return formattedDate;
+    }
+
+    return dateString;
+  }
+
+  return <p className={className}>Mise à jour : {formatDate(date)} </p>;
+})`
+  margin-top: auto;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: clamp(8px, 0.8vw, 10px);
+  line-height: 100%;
 `;
 
 const Badge = styled(({ className, name, image_url }) => (

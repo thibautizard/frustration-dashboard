@@ -8,7 +8,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Home from "./pages/Paiements";
+import Home from "./pages/Revenus";
 import Layout from "./Layout";
 import Auth from "./pages/Authentification";
 import Account from "./pages/Account";

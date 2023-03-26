@@ -4,7 +4,7 @@ import Header from "../components/Header/Header";
 import Authentification from "../pages/authentification/Authentification";
 import Layout from "../pages/Layout";
 import { ToastContainer } from "react-toastify";
-import { useSession } from "../hooks/useSession.js";
+import useSession from "../hooks/useSession.js";
 
 function Root() {
   const session = useSession();

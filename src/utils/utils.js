@@ -1,9 +1,15 @@
+
+
+
+/*
+
 // Calcul abonnements
 export function calculatesubscriptionsCumulated(subscriptions) {
   let subscriptionsCumulated = subscriptions.reduce((acc, cv) => {
     const date = new Date(cv.created);
     date.setHours(0, 0, 0, 0);
     const timestamp = date.getTime();
+
     if (Object.keys(acc).includes(String(timestamp))) {
       acc[timestamp]++;
     } else {
@@ -59,3 +65,5 @@ export function calculatesubscriptionsPriceCumulated(subscriptions) {
   });
   return subscriptionsCumulated;
 }
+
+*/

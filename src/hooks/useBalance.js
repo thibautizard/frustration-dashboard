@@ -9,7 +9,6 @@ function useBalance() {
       const { data, error } = await supabase.from("balance").select("*");
       setBalance(data[0]);
     };
-
     balanceFetch();
   }, []);
 

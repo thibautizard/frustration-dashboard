@@ -46,28 +46,17 @@ Highcharts.setOptions({
   chart: {
     backgroundColor: "#000000",
     borderRadius: "0px",
-    spacing: [20, 30, 10, 30],
+    spacing: [20, 30, 20, 30],
     style: {
       fontFamily: "Poppins",
     },
   },
-
-  colors: [
-    "#FFF200",
-    "#FFF200",
-    "#910000",
-    "#1aadce",
-    "#492970",
-    "#f28f43",
-    "#77a1e5",
-    "#c42525",
-    "#a6c96a",
-  ],
   credits: {
     enabled: false,
   },
   legend: {
     margin: 0,
+    enabled: false,
     itemStyle: {
       color: "#FFFFFF",
       fontWeight: 400,

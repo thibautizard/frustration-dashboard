@@ -6,10 +6,8 @@ function useSubscriptions() {
 
   useEffect(() => {
     const subscriptionsFetch = async () => {
-      const { data, error } = await supabase
-        .from("balance_transactions")
-        .select("amount, net, created")
-        .eq("description", "subscription_creation");
+
+        const { data, error } = await supabase.rpc("subscriptions_by_month");
       setSubscriptions(data);
     };
     subscriptionsFetch();

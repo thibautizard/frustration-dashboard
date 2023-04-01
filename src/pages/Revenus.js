@@ -27,7 +27,8 @@ const Revenus = styled(({ className }) => {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
+  row-gap: 30px;
   justify-content: space-between;
   flex-wrap: wrap;
   & > * {

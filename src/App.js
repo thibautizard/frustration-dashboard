@@ -17,6 +17,7 @@ import NoAccesAuthorized from "./pages/AuthentificationError";
 import "./global.css";
 
 const App = () => {
+
   const router = createBrowserRouter([
     {
       path: "/",

@@ -1,10 +1,9 @@
-import { useState } from "react";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import pp_redaction from "./pp_redaction.png";
 import useSession from "../../hooks/useSession";
-import useEvents from "../../hooks/useEvents";
+import useDatabase from "../../hooks/useDatabase";
 import menus from "./menus.json";
 import badges from "./badges.json";
 
@@ -15,8 +14,7 @@ const Sidebar = styled(({ className }) => {
     user = badges.filter((badge) => badge.id === session.user.id)[0];
   }
 
-  const [events, setEvents] = useEvents();
-
+  const { events } = useDatabase();
   return (
     <aside className={className}>
       {/* <Arrow /> */}

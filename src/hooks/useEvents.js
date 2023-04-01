@@ -6,7 +6,10 @@ function useEvents() {
 
   useEffect(() => {
     const eventsFetch = async () => {
-      const { data, error } = await supabase.from("events").select("*");
+      const { data, error } = await supabase
+        .from("events")
+        .select("*")
+        .order("date", { ascending: false });
       setEvents(data);
     };
 

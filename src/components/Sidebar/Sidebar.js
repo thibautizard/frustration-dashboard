@@ -40,19 +40,16 @@ const Sidebar = styled(({ className }) => {
   --bg-color-hover: #191a00;
   --color: #fff200;
 
+  grid-row:2/3;
   background-color: var(--bg-color);
   color: var(--color);
   fill: var(--color);
-  box-sizing: border-box;
   box-shadow: var(--container-shadow);
   font-family: Poppins;
-  height: 100%;
-  padding: 0 15px;
-  padding-bottom: 10px;
-  position: relative;
+  padding: 0 15px 10px 15px;
+  align-self:stretch;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 `;
 
 const UpdateNotification = styled(({ className, date }) => {
@@ -162,7 +159,7 @@ const Menu = styled(({ className, icon, text, link, index }) => (
     margin-block: 0;
     margin-inline: 0;
     line-height: 110%;
-    padding: clamp(7px, 0.7vw, 16px) clamp(12px, 0.9vw, 20px);
+    padding: clamp(7px, 0.7vw, 16px) 40px clamp(7px, 0.7vw, 16px) clamp(14px, 0.9vw, 22px);
     border-radius: 4px;
     font-size: clamp(12px, 0.9vw, 20px);
     display: flex;

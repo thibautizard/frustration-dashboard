@@ -7,7 +7,6 @@ import {
 } from "../charts/highcharts";
 import styled from "styled-components";
 
-
 const Revenus = styled(({ className }) => {
   return (
     <div class={className}>
@@ -20,24 +19,12 @@ const Revenus = styled(({ className }) => {
     </div>
   );
 })`
-  text-align: center;
-  align-self: center;
-  margin: auto;
-  overflow: scroll;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: stretch;
-  row-gap: 30px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  & > * {
-    flex-basis: 49%;
-    flex-shrink: 1;
-  }
-  p {
-    font-size: 1.5rem;
-  }
+
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  box-sizing:border-box;
+
 `;
 
 export default Revenus;

@@ -124,6 +124,7 @@ export const ChartStripeSubscriptions = () => {
   const options = {
     chart: {
       type: "line",
+
     },
     title: {
       text: "Abonnements Stripe",
@@ -201,6 +202,7 @@ export const ChartStripeDonations = () => {
   const options = {
     chart: {
       type: "line",
+
     },
     title: {
       text: "Dons Stripe",
@@ -278,6 +280,7 @@ export const ChartHelloassoSubscriptions = () => {
   const options = {
     chart: {
       type: "line",
+
     },
     title: {
       text: "Abonnements HelloAsso",
@@ -354,6 +357,7 @@ export const ChartHelloassoDonations = () => {
   const options = {
     chart: {
       type: "line",
+
     },
     title: {
       text: "Dons HelloAsso",

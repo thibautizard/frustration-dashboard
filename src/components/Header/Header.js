@@ -10,16 +10,16 @@ const Header = styled(({ className }) => (
     <Avertissement />
   </header>
 ))`
-  width: 100vw;
 
   background-color: #000000;
   color: #fff200;
-
+  grid-column: 1/3;
+    grid-row: 1/2;
+  position:relative;
   display: flex;
   justify-content: center;
   align-items: baseline;
   gap: 10px;
-  position: relative;
 `;
 
 const Title = styled(({ className, children }) => (

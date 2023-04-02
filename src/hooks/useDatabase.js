@@ -5,6 +5,7 @@ function useDatabase() {
   const [donations, setDonations] = useState([]);
   const [events, setEvents] = useState([]);
   const [subscriptions, setSubscriptions] = useState([]);
+  const [subscriptionsType, setSubscriptionsType] = useState([]);
   const [balance, setBalance] = useState({});
 
   useEffect(() => {
@@ -20,6 +21,12 @@ function useDatabase() {
       setSubscriptions(data);
     };
 
+    const subscriptionsTypeFetch = async () => {
+      const { data, error } = await supabase.rpc("subscriptions_type_by_month");
+      if (error) console.error(error);
+      setSubscriptionsType(data);
+    };
+
     const eventsFetch = async () => {
       const { data, error } = await supabase
         .from("events")
@@ -33,13 +40,14 @@ function useDatabase() {
       setBalance(data[0]);
     };
 
+    subscriptionsTypeFetch();
     subscriptionsFetch();
     donationsFetch();
     eventsFetch();
     balanceFetch();
   }, []);
 
-  return { subscriptions, donations, events, balance };
+  return { subscriptions, subscriptionsType, donations, events, balance };
 }
 
 export default useDatabase;

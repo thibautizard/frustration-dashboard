@@ -46,7 +46,7 @@ Highcharts.setOptions({
 
   chart: {
     backgroundColor: "rgba(0,0,0,.85)",
-    height:700,
+    height:600,
     borderRadius: "0px",
     spacing: [20, 30, 20, 30],
     style: {
@@ -56,7 +56,7 @@ Highcharts.setOptions({
   credits: {
     enabled: false,
   },
-  
+
   legend: {
     margin: 0,
     enabled: false,
@@ -80,14 +80,6 @@ Highcharts.setOptions({
   },
   time: {
     timezone: "Europe/Paris",
-  },
-  title: {
-    align: "center",
-    margin: 25,
-    style: {
-      color: "#FFFFFF",
-      fontSize: "24px",
-    },
   },
 
   xAxis: {
@@ -129,6 +121,12 @@ export const ChartStripeSubscriptions = () => {
     },
     title: {
       text: "Abonnements Stripe",
+      align: "center",
+      margin: 25,
+      style: {
+        color: "#FFFFFF",
+        fontSize: "28px",
+      },
     },
     xAxis: {
       type: "datetime",
@@ -197,6 +195,37 @@ export const ChartStripeSubscriptions = () => {
   );
 };
 
+export const ChartStripeTypeSubscriptions = () => {
+  const { subscriptionsType } = useDatabase();
+  let data  = subscriptionsType.filter(subscription => subscription.source==="stripe")
+
+  const options = {
+    chart: {
+      type: 'pie',
+      height:300,
+      backgroundColor: "transparent",
+    },
+    title : {
+      text: ""
+    },
+    colors: ['#552586', '#6A359C','#804FB3', '#9968C7', '#B589D6'],
+    tooltip: {
+      pointFormat: "Nombre d'abonnement: <b>{point.y:.0f} ({point.percentage:.1f}%)</b>" // display percentage and absolute value in tooltip
+    },
+    series: [{
+      name: "Type d'abonnement",
+      data: data.map(subscription => ({name: subscription.amount, y: subscription.subscriptions}))
+    }]
+  };
+
+  return (
+    <HighchartsReact
+      highcharts={Highcharts}
+      options={options}
+    ></HighchartsReact>
+  );
+};
+
 export const ChartStripeDonations = () => {
   const { donations } = useDatabase();
 
@@ -205,7 +234,13 @@ export const ChartStripeDonations = () => {
       type: "line"
     },
     title: {
-      text: "Dons Stripe",
+      text: "Don sur Stripe",
+      align: "center",
+      margin: 25,
+      style: {
+        color: "#FFFFFF",
+        fontSize: "28px",
+      },
     },
     xAxis: {
       type: "datetime",
@@ -283,6 +318,12 @@ export const ChartHelloassoSubscriptions = () => {
     },
     title: {
       text: "Abonnements HelloAsso",
+      align: "center",
+      margin: 25,
+      style: {
+        color: "#FFFFFF",
+        fontSize: "28px",
+      },
     },
     xAxis: {
       type: "datetime",

@@ -6,12 +6,32 @@ import {
   ChartHelloassoSubscriptions,
   ChartHelloassoDonations,
 } from "../charts/highcharts";
+import useDatabase from "../hooks/useDatabase";
 import styled from "styled-components";
 
 const Revenus = styled(({ className }) => {
+
+  // get the current date
+  const currentDate = new Date();
+
+  // subtract one month from the current date
+  const lastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth());
+
+  // get the name of the last month in French
+  const options = { month: 'long', timeZone: 'UTC' };
+  const lastMonthName = lastMonth.toLocaleString('fr-FR', options);
+
+  const { total }= useDatabase();
+
   return (
     <div class={className}>
       {/* <p>{balance.available}</p> */}
+
+      <div>
+        <h2>Total abonnements {lastMonthName}</h2>
+        <p>Nombre : <span>{total && total[0]?.subscriptions} abonnements actifs</span></p>
+        <p>Revenus : <span>{total && total[0]?.net} € nets (+{total && total[0]?.evolution})</span></p>
+      </div>
 
       <ChartStripeSubscriptions />
       <div className="secondary-charts">

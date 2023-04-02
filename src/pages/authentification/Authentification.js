@@ -15,7 +15,7 @@ const Authentification = () => {
   const { loading, disabled, form, handleLogin } = useAuthentification();
 
   return (
-    <Popup title="Authentification" isClosable={false}>
+    <Popup title="Authentification" isClosable={false} style="position: absolute;left: 50%;translate: -50% 0;">
       <form onSubmit={handleLogin}>
         <TextInput
           name="email"

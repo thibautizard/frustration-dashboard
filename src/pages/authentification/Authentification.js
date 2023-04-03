@@ -11,7 +11,7 @@ import {
 import Popup from "../../components/Popup/Popup";
 import useAuthentification from "../../hooks/useAuthentification";
 
-const Authentification = styled((className) => {
+const Authentification = styled(({className}) => {
   const { loading, disabled, form, handleLogin } = useAuthentification();
 
   return (

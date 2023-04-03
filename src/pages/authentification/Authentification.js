@@ -10,12 +10,13 @@ import {
 } from "@mantine/core";
 import Popup from "../../components/Popup/Popup";
 import useAuthentification from "../../hooks/useAuthentification";
+import styled from 'styled-components';
 
-const Authentification = () => {
+const Authentification = styled((className) => {
   const { loading, disabled, form, handleLogin } = useAuthentification();
 
   return (
-    <Popup title="Authentification" isClosable={false} style="position: absolute;left: 50%;translate: -50% 0;">
+    <Popup title="Authentification" isClosable={false} className={className}>
       <form onSubmit={handleLogin}>
         <TextInput
           name="email"
@@ -38,7 +39,11 @@ const Authentification = () => {
       </form>
     </Popup>
   );
-};
+})`
+position: absolute;
+left: 50%;
+translate: -50% 0;
+`
 
 const SubmitButton = styled(Button)`
   margin-top: 30px;

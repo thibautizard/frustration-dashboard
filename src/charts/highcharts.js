@@ -46,7 +46,7 @@ Highcharts.setOptions({
 
   chart: {
     backgroundColor: "rgba(0,0,0,.85)",
-    height:600,
+    height:500,
     borderRadius: "0px",
     spacing: [20, 30, 20, 30],
     style: {
@@ -234,7 +234,7 @@ export const ChartStripeDonations = () => {
       type: "line"
     },
     title: {
-      text: "Don sur Stripe",
+      text: "Dons sur Stripe",
       align: "center",
       margin: 25,
       style: {
@@ -400,6 +400,12 @@ export const ChartHelloassoDonations = () => {
     },
     title: {
       text: "Dons HelloAsso",
+      align: "center",
+      margin: 25,
+      style: {
+        color: "#FFFFFF",
+        fontSize: "28px",
+      }
     },
     xAxis: {
       type: "datetime",

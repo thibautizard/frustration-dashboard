@@ -10,7 +10,6 @@ import {
 } from "@mantine/core";
 import Popup from "../../components/Popup/Popup";
 import useAuthentification from "../../hooks/useAuthentification";
-import styled from 'styled-components';
 
 const Authentification = styled((className) => {
   const { loading, disabled, form, handleLogin } = useAuthentification();

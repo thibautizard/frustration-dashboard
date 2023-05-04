@@ -31,16 +31,14 @@ function useAuthentification() {
         },
       });
       if (error) throw error;
-      
+
       toast.success("Vérifiez le lien à votre adresse e-mail 😉", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
       });
     } catch (error) {
-      console.log(error);
-      alert(
-        "Vous n'êtes pas autorisé à vous connecter à Frustration Dashboard"
-      );
+      console.error(error);
+      alert("Vous n'êtes pas autorisé à vous connecter à Frustration Dashboard");
     } finally {
       setLoading(false);
     }

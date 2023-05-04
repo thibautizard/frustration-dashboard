@@ -18,7 +18,7 @@ function Root() {
   return (
     <>
       <Header />
-      {session ? (
+      {session || process.env.NODE_ENV === "development" ? (
         <Layout>
           <Outlet />
         </Layout>

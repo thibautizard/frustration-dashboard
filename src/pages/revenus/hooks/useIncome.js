@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import supabase from "../config/supabaseClient";
+import supabase from "../../../config/supabaseClient";
 
-function useDatabase() {
+function useIncome() {
 	const [donations, setDonations] = useState([]);
 	const [events, setEvents] = useState([]);
 	const [subscriptions, setSubscriptions] = useState([]);
@@ -55,4 +55,4 @@ function useDatabase() {
 	return { subscriptions, subscriptionsType, donations, events, balance, total };
 }
 
-export default useDatabase;
+export default useIncome;

@@ -11,18 +11,9 @@ const Revenus = styled(({ className }) => {
 
 			<Panel />
 
-			<div className="charts-container">
-				<ChartLine type="subscriptions" source="Stripe" color="#515EE1" />
-				<ChartLine type="subscriptions" source="HelloAsso" color="#4AD28A" />
-			</div>
-			<ChartLine type="donations" source="Stripe" color="#515EE1" />
-			<ChartStripeTypeSubscriptions />
-
-			<div className="secondary-charts">
-				<ChartStripeTypeSubscriptions />
-			</div>
-
-			<ChartLine type="donations" source="HelloAsso" color="#4AD28A" />
+			<ChartLine type="subscriptions" />
+			<ChartLine type="donations" />
+			{/* <ChartLine type="ventes" /> */}
 		</div>
 	);
 })`
@@ -35,12 +26,16 @@ const Revenus = styled(({ className }) => {
 	.charts-container {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
 
 		& > *:first-child {
+			flex-basis: 0px;
 			flex-grow: 1;
 		}
 
 		& > *:last-child {
+			flex-basis: 0px;
 			flex-grow: 1;
 		}
 	}

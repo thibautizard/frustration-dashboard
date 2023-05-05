@@ -18,7 +18,7 @@ Highcharts.setOptions({
 			"Novembre",
 			"Décembre"
 		],
-		sortMonths: ["Jan.", "Fév.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."]
+		shortMonths: ["Jan.", "Fév.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."]
 	},
 
 	chart: {
@@ -35,8 +35,7 @@ Highcharts.setOptions({
 	},
 
 	legend: {
-		margin: 0,
-		enabled: false,
+		enabled: true,
 		itemStyle: {
 			color: "#FFFFFF",
 			fontWeight: 400

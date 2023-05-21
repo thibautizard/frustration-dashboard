@@ -46,6 +46,11 @@ Highcharts.setOptions({
 			fontWeight: 400
 		}
 	},
+	plotOptions: {
+		series: {
+			animation: false // Disable animations
+		}
+	},
 	tooltip: {
 		backgroundColor: "#FFFFFF",
 		borderWidth: 2,

@@ -1,7 +1,6 @@
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import pp_redaction from "./pp_redaction.png";
 import useSession from "../../hooks/useSession";
 import useDatabase from "../../pages/revenus/hooks/useIncome";
 import menus from "./menus.json";
@@ -17,7 +16,6 @@ const Sidebar = styled(({ className }) => {
 	const { events } = useDatabase();
 	return (
 		<aside className={className}>
-			{/* <Arrow /> */}
 			<Menus>
 				{menus.map(({ text, icon, link }, index) => (
 					<Menu icon={icon} text={text} link={link} index={index} />

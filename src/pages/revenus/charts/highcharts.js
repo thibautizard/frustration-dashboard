@@ -2,8 +2,6 @@ import Highcharts from "../../../config/highcharts.config";
 import HighchartsReact from "highcharts-react-official";
 import useDatabase from "../hooks/useIncome";
 
-// REVENUS //
-
 export const ChartStripeTypeSubscriptions = () => {
 	const { subscriptionsType } = useDatabase();
 	let data = subscriptionsType.filter((subscription) => subscription.source === "stripe");
@@ -21,6 +19,7 @@ export const ChartStripeTypeSubscriptions = () => {
 		tooltip: {
 			pointFormat: "Nombre d'abonnement: <b>{point.y:.0f} ({point.percentage:.1f}%)</b>" // display percentage and absolute value in tooltip
 		},
+
 		series: [
 			{
 				name: "Type d'abonnement",

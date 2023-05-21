@@ -1,19 +1,16 @@
 import React from "react";
-import { ChartStripeTypeSubscriptions } from "./charts/highcharts";
-import { ChartLine } from "./charts/line";
-import Panel from "./components/Panel";
 import styled from "styled-components";
+import { Tabs } from "./components/Tabs";
+import { Outlet } from "react-router-dom";
+import useIncome from "./hooks/useIncome";
 
 const Revenus = styled(({ className }) => {
+	const { total } = useIncome();
+
 	return (
-		<div class={className}>
-			{/* <p>{balance.available}</p> */}
-
-			<Panel />
-
-			<ChartLine type="subscriptions" />
-			<ChartLine type="donations" />
-			{/* <ChartLine type="ventes" /> */}
+		<div className={className}>
+			<Tabs />
+			<Outlet context={{ data: total }}></Outlet>
 		</div>
 	);
 })`

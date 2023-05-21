@@ -7,7 +7,10 @@ import Audiences from "./pages/Audiences";
 import Laboratoire from "./pages/Laboratoire";
 import Passwords from "./pages/Passwords";
 import Error from "./pages/Error";
-
+import { element } from "prop-types";
+import Abonnements from "./pages/revenus/tabs/Abonnements";
+import Dons from "./pages/revenus/tabs/Dons";
+import Ventes from "./pages/revenus/tabs/Ventes";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -20,7 +23,21 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/revenus",
-				element: <Revenus />
+				element: <Revenus />,
+				children: [
+					{
+						path: "abonnements",
+						element: <Abonnements />
+					},
+					{
+						path: "dons",
+						element: <Dons />
+					},
+					{
+						path: "ventes",
+						element: <Ventes />
+					}
+				]
 			},
 			{
 				path: "/audiences",

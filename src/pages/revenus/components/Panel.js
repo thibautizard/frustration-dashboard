@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { IoCaretBackOutline, IoCaretForwardOutline } from "react-icons/io5";
-import { ChartColumn } from "../charts/column";
+import { ChartColumn } from "../charts/panel-column";
 import { tidy, summarize, groupBy, sum } from "@tidyjs/tidy";
 
 const Panel = styled(({ className, type, data }) => {
@@ -13,6 +13,12 @@ const Panel = styled(({ className, type, data }) => {
 		donation: "don" + (data.length > 1 ? "s" : ""),
 		sale: "ventes"
 	};
+
+  const icon = {
+		subscription: "🙆‍♂️",
+		donation: "🙏",
+		sale: "📰"
+	}[type];
 
 	// get the current date
 	const currentDate = new Date(data[index]?.created);
@@ -40,7 +46,7 @@ const Panel = styled(({ className, type, data }) => {
 					{lastMonthName} {currentDate.getFullYear()}
 				</h2>
 				<p>
-					🙆‍♂️{" "}
+					{icon}{" "}
 					<span>
 						{data && data[index]?.total} {labels[type]}
 					</span>

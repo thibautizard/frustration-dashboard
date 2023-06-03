@@ -21,6 +21,8 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@supabase/supabase-js": "^2.2.2",
+    "@tanstack/react-query": "^4.29.12",
+    "@tanstack/react-query-devtools": "^4.29.12",
     "@tanstack/react-table": "^8.7.4",
     "@tidyjs/tidy": "^2.5.2",
     "@types/react": "^18.0.26",

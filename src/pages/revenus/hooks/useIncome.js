@@ -11,11 +11,6 @@ function useIncome() {
 	const [balanceTransactions, setBalanceTransactions] = useState([]);
 
 	useEffect(() => {
-		const totalFetch = async () => {
-			const { data, error } = await supabase.rpc("total_by_month");
-			if (error) console.error(error);
-			setTotal(data);
-		};
 
 		const eventsFetch = async () => {
 			const { data, error } = await supabase.from("events").select("*").order("date", { ascending: false });
@@ -62,7 +57,6 @@ function useIncome() {
 		// balanceFetch();
 		// balanceTransactionsFetch();
 		eventsFetch();
-		totalFetch();
 	}, []);
 
 	return { events, total };

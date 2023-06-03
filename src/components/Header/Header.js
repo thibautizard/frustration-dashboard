@@ -10,12 +10,11 @@ const Header = styled(({ className }) => (
     <Avertissement />
   </header>
 ))`
-
   background-color: #000000;
   color: #fff200;
   grid-column: 1/3;
-    grid-row: 1/2;
-  position:relative;
+  grid-row: 1/2;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -34,15 +33,13 @@ const Title = styled(({ className, children }) => (
   position: relative;
 `;
 
-const Version = styled(({ className, children }) => (
-  <small className={className}>v.{children}</small>
-))`
+const Version = styled(({ className, children }) => <small className={className}>v.{children}</small>)`
   font-size: clamp(12px, 0.7vw, 20px);
   font-weight: 200;
   text-transform: lowercase;
 `;
 
-const Avertissement = styled(({ className, children }) => (
+const Avertissement = styled(({ className }) => (
   <div className={className}>
     <IconExclamation />
     Expérimental

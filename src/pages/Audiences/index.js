@@ -1,5 +1,5 @@
-import { FaPaintRoller } from "react-icons/fa";
-import styled, { keyframes } from "styled-components";
+import { FaPaintRoller } from 'react-icons/fa'
+import styled, { keyframes } from 'styled-components'
 
 const move = keyframes`
   from {
@@ -9,7 +9,7 @@ const move = keyframes`
   to {
     transform: translateY(0px);
   }
-`;
+`
 
 const Audiences = styled(({ className }) => {
   return (
@@ -17,7 +17,7 @@ const Audiences = styled(({ className }) => {
       <FaPaintRoller />
       <p>En travaux</p>
     </div>
-  );
+  )
 })`
   text-align: center;
   align-self: center;
@@ -31,6 +31,6 @@ const Audiences = styled(({ className }) => {
   p {
     font-size: 1.5rem;
   }
-`;
+`
 
-export default Audiences;
+export default Audiences

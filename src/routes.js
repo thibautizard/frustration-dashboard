@@ -1,58 +1,54 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom'
 
-import Layout from "./layout/Layout";
-import Revenus from "./pages/revenus/Revenus";
-import Accueil from "./pages/Accueil";
-import Audiences from "./pages/Audiences";
-import Laboratoire from "./pages/Laboratoire";
-import Passwords from "./pages/Passwords";
-import Error from "./pages/Error";
-import { element } from "prop-types";
-import Abonnements from "./pages/revenus/tabs/Abonnements";
-import Dons from "./pages/revenus/tabs/Dons";
-import Ventes from "./pages/revenus/tabs/Ventes";
+import Layout from './pages/Layout/index'
+import Revenus from './pages/Revenus/index'
+import Accueil from './pages/Accueil/index'
+import Audiences from './pages/Audiences/index'
+import Laboratoire from './pages/Laboratoire/index'
+import Passwords from './pages/Identifiants/index'
+import Error from './pages/Erreur/index'
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Layout />,
-		errorElement: <Error />,
-		children: [
-			{
-				path: "/",
-				element: <Accueil />
-			},
-			{
-				path: "/revenus",
-				element: <Revenus />,
-				children: [
-					{
-						path: "abonnements",
-						element: <Abonnements />
-					},
-					{
-						path: "dons",
-						element: <Dons />
-					},
-					{
-						path: "ventes",
-						element: <Ventes />
-					}
-				]
-			},
-			{
-				path: "/audiences",
-				element: <Audiences />
-			},
-			{
-				path: "/passwords",
-				element: <Passwords />
-			},
-			{
-				path: "/laboratoire",
-				element: <Laboratoire />
-			}
-		]
-	}
-]);
+  {
+    path: '/',
+    element: <Layout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: '/',
+        element: <Accueil />
+      },
+      {
+        path: '/revenus',
+        element: <Revenus />,
+        children: [
+          {
+            path: 'subscription',
+            element: <Revenus />
+          },
+          {
+            path: 'donation',
+            element: <Revenus />
+          },
+          {
+            path: 'sale',
+            element: <Revenus />
+          }
+        ]
+      },
+      {
+        path: '/audiences',
+        element: <Audiences />
+      },
+      {
+        path: '/passwords',
+        element: <Passwords />
+      },
+      {
+        path: '/laboratoire',
+        element: <Laboratoire />
+      }
+    ]
+  }
+])
 
-export default router;
+export default router

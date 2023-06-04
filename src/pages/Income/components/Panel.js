@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { IoCaretBackOutline, IoCaretForwardOutline } from "react-icons/io5";
-import { ChartColumn } from "../charts/panel-column";
+import { ChartColumn } from "./charts/panel-column";
 import { tidy, summarize, groupBy, sum } from "@tidyjs/tidy";
 
 const Panel = styled(({ className, type, data }) => {

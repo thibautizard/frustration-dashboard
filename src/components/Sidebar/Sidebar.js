@@ -1,19 +1,27 @@
 import parse from 'html-react-parser'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import useSession from '../../hooks/useSession'
-import useDatabase from '../../pages/Revenus/hooks/useIncome'
+import useSession from '../../hooks/use-session.hook'
 import menus from './menus.json'
 import badges from './badges.json'
-
+import { useQuery } from '@tanstack/react-query'
+import supabase from '../../config/supabaseClient'
 const Sidebar = styled(({ className }) => {
+
+  let { data, isLoading, error } = useQuery({
+    queryKey: ['events'],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("events").select("*").order("date", { ascending: false });
+			if (error) console.error(error);
+			return data;
+    }
+  })
   const session = useSession()
   let user
   if (session) {
     user = badges.filter((badge) => badge.id === session.user.id)[0]
   }
 
-  const { events } = useDatabase()
   return (
     <aside className={className}>
       <Menus>
@@ -21,7 +29,8 @@ const Sidebar = styled(({ className }) => {
           <Menu icon={icon} text={text} link={link} index={index} />
         ))}
       </Menus>
-      <UpdateNotification date={events[0]?.date} />
+      <BadgeContainer>
+      {!isLoading && <UpdateNotification date={data[0]?.date} />}
       <Badge
         name={user?.first_name}
         image_url={
@@ -30,6 +39,7 @@ const Sidebar = styled(({ className }) => {
             : require('./pp_redaction.png')
         }
       />
+      </BadgeContainer>
     </aside>
   )
 })`
@@ -73,11 +83,18 @@ const UpdateNotification = styled(({ className, date }) => {
 
   return <p className={className}>Mise à jour : {formatDate(date)} </p>
 })`
-  margin-top: auto;
   margin-bottom: 10px;
   text-align: center;
   font-size: clamp(8px, 0.8vw, 10px);
   line-height: 100%;
+`
+
+const BadgeContainer = styled(({className, children}) => (
+  <div className={className}>
+    {children}
+  </div>
+))`
+  margin-top: auto;
 `
 
 const Badge = styled(({ className, name, image_url }) => (

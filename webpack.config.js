@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const htmlPlugin = new HtmlWebPackPlugin({
-  template: "./index.html",
+  template: "./public/index.html",
 });
 
 module.exports = {
@@ -32,7 +32,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js", ".jsx"],
+    alias : {
+      "@components": path.resolve(__dirname, 'src/components'),
+      "@pages": path.resolve(__dirname, 'src/pages'),
+      "@config": path.resolve(__dirname, 'src/config'),
+      "@helpers": path.resolve(__dirname, 'src/helpers'),
+      "@hooks": path.resolve(__dirname, 'src/hooks'),
+    }
   },
   output: {
     filename: "bundle.js",

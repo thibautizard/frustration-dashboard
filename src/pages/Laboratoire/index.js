@@ -2,10 +2,6 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { FaPaintRoller } from "react-icons/fa";
 
-// export default function Laboratoire() {
-//   return <div>Laboratoire</div>;
-// }
-
 const move = keyframes`
   from {
     transform: translateY(-20px);

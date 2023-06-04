@@ -1,19 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Tabs } from './components/Tabs'
-import useIncome from './hooks/useIncome'
 import Panel from './components/Panel'
-import { ChartLine } from './charts/line'
+import { ChartLine } from './components/charts/line'
 import { useLocation } from 'react-router-dom'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import supabase from '../../config/supabaseClient'
+import { useQuery } from '@tanstack/react-query'
+import supabase from '@config/supabaseClient'
 
-const Revenus = styled(({ className }) => {
+const Income = styled(({ className }) => {
   const type = useLocation().pathname.match(/[^/]+$/g)[0]
 
   let { data, isLoading, error } = useQuery({
     queryKey: ['income'],
-    queryFn: async (type) => {
+    queryFn: async () => {
       let { data, error } = await supabase.rpc('total_by_month')
       if (error) console.error(error)
       return data
@@ -23,11 +22,11 @@ const Revenus = styled(({ className }) => {
   if (data) data = data.filter((row) => row.type === type)
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Chargement...</div>
   }
 
   if (error) {
-    return <div>Error fetching data</div>
+    return <div>Erreur lors du téléchargement des données</div>
   }
 
   return (
@@ -73,4 +72,4 @@ const Revenus = styled(({ className }) => {
   }
 `
 
-export default Revenus
+export default Income

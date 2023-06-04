@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import Header from '../../components/Header/Header'
+import Header from '@components/Header'
 import Authentification from '../Authentification/index'
 import { ToastContainer } from 'react-toastify'
-import useSession from '../../hooks/useSession.js'
-import Sidebar from '../../components/Sidebar/Sidebar'
+import useSession from '@hooks/use-session.hook.js'
+import Sidebar from '@components/Sidebar'
 import styled from 'styled-components'
 
 function Layout() {

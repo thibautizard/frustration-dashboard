@@ -1,5 +1,5 @@
 import HighchartsReact from 'highcharts-react-official'
-import Highcharts from '../../../config/highcharts.config'
+import Highcharts from '@config/highcharts.config'
 import { events } from './events'
 
 export function ChartLine({ type, data }) {

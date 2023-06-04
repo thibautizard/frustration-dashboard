@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import Layout from './pages/Layout/index'
-import Revenus from './pages/Revenus/index'
+import Income from '@pages/Income'
 import Accueil from './pages/Accueil/index'
 import Audiences from './pages/Audiences/index'
 import Laboratoire from './pages/Laboratoire/index'
@@ -19,19 +19,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/revenus',
-        element: <Revenus />,
+        element: <Income />,
         children: [
           {
             path: 'subscription',
-            element: <Revenus />
+            element: <Income />
           },
           {
             path: 'donation',
-            element: <Revenus />
+            element: <Income />
           },
           {
             path: 'sale',
-            element: <Revenus />
+            element: <Income />
           }
         ]
       },

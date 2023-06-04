@@ -1,9 +1,9 @@
-import Highcharts from "../../../config/highcharts.config";
+import Highcharts from "@config/highcharts.config";
 import HighchartsReact from "highcharts-react-official";
-import useDatabase from "../hooks/useIncome";
+// import useDatabase from "../hooks/useIncome";
 
 export const ChartStripeTypeSubscriptions = () => {
-	const { subscriptionsType } = useDatabase();
+	// const { subscriptionsType } = useDatabase();
 	let data = subscriptionsType.filter((subscription) => subscription.source === "stripe");
 
 	const options = {

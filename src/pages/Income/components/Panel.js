@@ -8,11 +8,12 @@ const Panel = styled(({ className, type, data }) => {
 	const [index, setIndex] = useState(0);
 	data = tidy(data, groupBy(["created", "type"], [summarize({ total: sum("total"), net: sum("net") })]));
 
-	const labels = {
+	const label = {
+    total: null,
 		subscription: "abonnements actifs",
 		donation: "don" + (data.length > 1 ? "s" : ""),
 		sale: "ventes"
-	};
+	}[type];
 
   const icon = {
 		subscription: "🙆‍♂️",
@@ -45,12 +46,12 @@ const Panel = styled(({ className, type, data }) => {
 				<h2>
 					{lastMonthName} {currentDate.getFullYear()}
 				</h2>
-				<p>
+				{label && <p>
 					{icon}{" "}
 					<span>
-						{data && data[index]?.total} {labels[type]}
+						{data && data[index]?.total} {label}
 					</span>
-				</p>
+				</p>}
 				<p>
 					💸{" "}
 					<span>

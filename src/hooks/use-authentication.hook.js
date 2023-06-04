@@ -47,4 +47,4 @@ function useAuthentification() {
   return { loading, disabled, form, handleLogin };
 }
 
-export default useAuthentification;
+export { useAuthentification };

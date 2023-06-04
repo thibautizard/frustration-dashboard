@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import useDatatable from "../../hooks/useDatatable";
 
 const Table = styled(({ className }) => {
   const [headers, rows] = useDatatable("frustration_campagne_dons");

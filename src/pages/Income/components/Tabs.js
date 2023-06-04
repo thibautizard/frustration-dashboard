@@ -14,6 +14,7 @@ export const Tabs = styled(({ className }) => {
   return (
     <div className={className} onClick={selectTab}>
       {[
+        { name: 'Total', route: 'total' },
         { name: 'Abonnements', route: 'subscription' },
         { name: 'Dons', route: 'donation' },
         { name: 'Ventes', route: 'sale' }

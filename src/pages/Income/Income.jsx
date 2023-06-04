@@ -1,25 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Tabs } from './components/Tabs'
-import Panel from './components/Panel'
-import { ChartLine } from './components/charts/line'
 import { useLocation } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
-import supabase from '@config/supabaseClient'
+import { useIncome } from '@hooks'
+import { Outlet } from "react-router-dom";
 
 const Income = styled(({ className }) => {
   const type = useLocation().pathname.match(/[^/]+$/g)[0]
-
-  let { data, isLoading, error } = useQuery({
-    queryKey: ['income'],
-    queryFn: async () => {
-      let { data, error } = await supabase.rpc('total_by_month')
-      if (error) console.error(error)
-      return data
-    }
-  })
-
-  if (data) data = data.filter((row) => row.type === type)
+  let { data, isLoading, error } = useIncome();
 
   if (isLoading) {
     return <div>Chargement...</div>
@@ -32,8 +20,7 @@ const Income = styled(({ className }) => {
   return (
     <div className={className}>
       <Tabs />
-      <Panel type={type} data={data} />
-      <ChartLine type={type} data={data} />
+      <Outlet context={{ data: data, type:type }}></Outlet>
     </div>
   )
 })`

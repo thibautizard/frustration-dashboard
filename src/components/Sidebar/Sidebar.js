@@ -1,7 +1,7 @@
 import parse from 'html-react-parser'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import useSession from '../../hooks/use-session.hook'
+import { useSession } from '@hooks'
 import menus from './menus.json'
 import badges from './badges.json'
 import { useQuery } from '@tanstack/react-query'
@@ -36,7 +36,7 @@ const Sidebar = styled(({ className }) => {
         image_url={
           user
             ? require(`../../img/pp/${user?.id}.${user?.image_extension}`)
-            : require('./pp_redaction.png')
+            : require('../../img/pp/pp_redaction.png')
         }
       />
       </BadgeContainer>

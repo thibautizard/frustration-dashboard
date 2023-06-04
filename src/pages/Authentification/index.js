@@ -2,14 +2,11 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   TextInput,
-  Checkbox,
   Button,
   Group,
-  Box,
-  PasswordInput,
 } from "@mantine/core";
 import Popup from "../../components/Popup/Popup";
-import useAuthentification from "../../hooks/use-authentication.hook";
+import { useAuthentification } from "@hooks";
 
 const Authentification = styled(({className}) => {
   const { loading, disabled, form, handleLogin } = useAuthentification();
@@ -41,7 +38,8 @@ const Authentification = styled(({className}) => {
 })`
 position: absolute;
 left: 50%;
-translate: -50% 0;
+top:50%;
+translate: -50% -50%;
 `
 
 const SubmitButton = styled(Button)`

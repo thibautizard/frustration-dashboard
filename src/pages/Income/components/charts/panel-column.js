@@ -2,8 +2,9 @@ import HighchartsReact from 'highcharts-react-official'
 import Highcharts from '@config/highcharts.config'
 
 export function ChartColumn({ type, data }) {
-  data = data.slice(0, 6).reverse()
+  data = data.slice(0, 8).reverse()
   const serieTitle = {
+    total: 'Total',
     subscription: 'Abonnements',
     donation: 'Dons',
     sale: 'Ventes'

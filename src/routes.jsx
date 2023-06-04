@@ -2,11 +2,15 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import Layout from './pages/Layout/index'
 import Income from '@pages/Income'
-import Accueil from './pages/Accueil/index'
-import Audiences from './pages/Audiences/index'
-import Laboratoire from './pages/Laboratoire/index'
-import Passwords from './pages/Identifiants/index'
-import Error from './pages/Erreur/index'
+import Total from '@pages/Income/Total'
+import Subscription from '@pages/Income/Subscription'
+import Donation from '@pages/Income/Donation'
+import Sale from '@pages/Income/Sale'
+import Accueil from '@pages/Accueil/index'
+import Audiences from '@pages/Audiences/index'
+import Laboratoire from '@pages/Laboratoire/index'
+import Passwords from '@pages/Identifiants/index'
+import Error from '@pages/Erreur/index'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -22,16 +26,20 @@ const router = createBrowserRouter([
         element: <Income />,
         children: [
           {
+            path: 'total',
+            element: <Total />
+          },
+          {
             path: 'subscription',
-            element: <Income />
+            element: <Subscription />
           },
           {
             path: 'donation',
-            element: <Income />
+            element: <Donation />
           },
           {
             path: 'sale',
-            element: <Income />
+            element: <Sale />
           }
         ]
       },

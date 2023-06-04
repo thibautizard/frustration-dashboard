@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Header from '@components/Header'
 import Authentification from '../Authentification/index'
 import { ToastContainer } from 'react-toastify'
-import useSession from '@hooks/use-session.hook.js'
+import { useSession } from '@hooks'
 import Sidebar from '@components/Sidebar'
 import styled from 'styled-components'
 

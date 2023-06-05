@@ -3,12 +3,7 @@ import Highcharts from '@config/highcharts.config'
 
 export function ChartColumn({ type, data }) {
   data = data.slice(0, 8).reverse()
-  const serieTitle = {
-    total: 'Total',
-    subscription: 'Abonnements',
-    donation: 'Dons',
-    sale: 'Ventes'
-  }[type]
+
   const options = {
     chart: {
       type: 'column',
@@ -61,7 +56,7 @@ export function ChartColumn({ type, data }) {
 
     series: [
       {
-        name: serieTitle,
+        name: type,
         color: 'var(--primary-color)',
         data: data.map((cv) => cv.net)
       }
@@ -75,7 +70,6 @@ export function ChartColumn({ type, data }) {
 
   return (
     <HighchartsReact
-      key={type}
       highcharts={Highcharts}
       options={options}
     ></HighchartsReact>

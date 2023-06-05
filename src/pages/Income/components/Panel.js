@@ -1,128 +1,108 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { IoCaretBackOutline, IoCaretForwardOutline } from "react-icons/io5";
-import { ChartColumn } from "./charts/panel-column";
-import { tidy, summarize, groupBy, sum } from "@tidyjs/tidy";
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { IoCaretBackOutline, IoCaretForwardOutline } from 'react-icons/io5'
+import { getMonthEvolution, getLastMonth } from '@utils'
 
-const Panel = styled(({ className, type, data }) => {
-	const [index, setIndex] = useState(0);
-	data = tidy(data, groupBy(["created", "type"], [summarize({ total: sum("total"), net: sum("net") })]));
+const Panel = styled(({ className, unit, icon, data, children }) => {
+  /* Variables */
+  const [i, setIndex] = useState(0)
+  const { created, net, total } = data[i]
+  const { prevNet } = data[i + 1]
+  const month = getLastMonth(created)
+  const evolution = getMonthEvolution(net, prevNet)
+  const firstPosition = 0
+  const lastPosition = data.length - 1
+  const detailsInfo = [
+    unit ? `${icon} ${total} ${unit}` : '',
+    `💸 ${net}€ nets (${evolution})`
+  ]
+  /* Render */
+  return (
+    <PanelContainer className={className}>
+      <DetailsContainer>
+        <Month month={month} />
+        {detailsInfo
+          .filter((_) => _)
+          .map((_) => (
+            <p>{_}</p>
+          ))}
 
-	const label = {
-    total: null,
-		subscription: "abonnements actifs",
-		donation: "don" + (data.length > 1 ? "s" : ""),
-		sale: "ventes"
-	}[type];
+        {/* <ArrowsContainer>
+          <LeftArrow
+            setIndex={setIndex}
+            last_position={LAST_POSITION}
+            firstPosition={FIRST_POSITION}
+          />
+          <RightArrow
+            setIndex={setIndex}
+            last_position={LAST_POSITION}
+            firstPosition={FIRST_POSITION}
+          />
+        </ArrowsContainer> */}
+      </DetailsContainer>
 
-  const icon = {
-		subscription: "🙆‍♂️",
-		donation: "🙏",
-		sale: "📰"
-	}[type];
-
-	// get the current date
-	const currentDate = new Date(data[index]?.created);
-
-	// subtract one month from the current date
-	const lastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1);
-
-	// get the name of the last month in French
-	const options = { month: "long", timeZone: "UTC" };
-	let lastMonthName = lastMonth.toLocaleString("fr-FR", options);
-	lastMonthName = lastMonthName.slice(0, 1).toUpperCase() + lastMonthName.slice(1);
-
-	// get evolution
-	let evolution = "";
-	if (data[index + 1]?.net) {
-		let percent = ((data[index].net - data[index + 1].net) / data[index].net) * 100;
-		percent = Math.trunc(percent * 100) / 100;
-		evolution = percent > 0 ? `(+${percent}%)` : `(${percent}%)`;
-	}
-
-	return (
-		<div className={className}>
-			<div className="left">
-				<h2>
-					{lastMonthName} {currentDate.getFullYear()}
-				</h2>
-				{label && <p>
-					{icon}{" "}
-					<span>
-						{data && data[index]?.total} {label}
-					</span>
-				</p>}
-				<p>
-					💸{" "}
-					<span>
-						{data && data[index]?.net} € nets {evolution}
-					</span>
-				</p>
-				<div className="arrows">
-					<IoCaretBackOutline
-						className={index === data.length - 1 ? "disabled" : "enabled"}
-						onClick={() => setIndex((prevIndex) => (prevIndex < data.length - 1 ? prevIndex + 1 : prevIndex))}
-					/>
-					<IoCaretForwardOutline
-						className={index === 0 ? "disabled" : "enabled"}
-						onClick={() => setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex))}
-					/>
-				</div>
-			</div>
-			<div className="right">
-				<ChartColumn type={type} data={data} />
-			</div>
-		</div>
-	);
+      <div className="right">{children}</div>
+    </PanelContainer>
+  )
 })`
-	box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
-	user-select: none;
-	background: black;
-	display: flex;
-	justify-content: space-between;
+  color: var(--primary-color);
+`
 
-	& :is(.right, .left) {
-	}
+const PanelContainer = styled(({ className, children }) => {
+  return <div className={className}>{children}</div>
+})`
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  background: black;
+  display: flex;
+  justify-content: space-between;
+`
 
-	.left {
-		color: #fff200;
-		border-radius: 15px;
-		padding: 10px 20px;
-	}
+const DetailsContainer = styled(({ className, children }) => {
+  return <div className={className}>{children}</div>
+})`
+  padding: 10px 20px;
+`
 
-	.right {
-		color: #000;
-		border-top-right-radius: 15px;
-		border-bottom-right-radius: 15px;
-		padding: 0;
-	}
+const Month = styled(({ className, month }) => {
+  return <h2 className={className}>{month}</h2>
+})`
+  font-size: 28px;
+  margin-bottom: 5px;
+`
 
-	h2 {
-		font-size: 28px;
-		margin-bottom: 5px;
-	}
+const ArrowsContainer = styled(({ className, children }) => {
+  return <div className={className}>{children}</div>
+})`
+  font-size: 25px;
+  margin-top: 10px;
 
-	p span {
-		margin-left: 5px;
-	}
+  > * {
+    gap: 0;
+    margin: 0;
 
-	.arrows {
-		font-size: 25px;
-		margin-top: 10px;
+    &:hover {
+      cursor: pointer;
+    }
 
-		> * {
-			gap: 0;
-			margin: 0;
+    &.disabled {
+      opacity: 0.5;
+    }
+  }
+`
 
-			&:hover {
-				cursor: pointer;
-			}
+const LeftArrow = ({ setIndex, lastPosition }) => (
+  <IoCaretBackOutline
+    className={i === lastPosition ? 'disabled' : 'enabled'}
+    onClick={() => setIndex((prev) => (prev < lastPosition ? prev + 1 : prev))}
+  />
+)
 
-			&.disabled {
-				opacity: 0.5;
-			}
-		}
-	}
-`;
+const RightArrow = ({ setIndex, firstPosition }) => (
+  <IoCaretForwardOutline
+    className={i === 0 ? 'disabled' : 'enabled'}
+    onClick={() => setIndex((prev) => (prev > firstPosition ? prev - 1 : prev))}
+  />
+)
 
-export default Panel;
+export default Panel

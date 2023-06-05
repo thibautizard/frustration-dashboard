@@ -3,12 +3,6 @@ import Highcharts from '@config/highcharts.config'
 import { events } from './events'
 
 export function ChartLine({ type, series }) {
-  const yAxisUnit = {
-    total: 'total',
-    subscription: 'abonnés',
-    donation: 'donateurs',
-    sale: 'acheteurs'
-  }[type]
   const options = {
     chart: {
       type: 'line'
@@ -29,7 +23,7 @@ export function ChartLine({ type, series }) {
     yAxis: [
       {
         labels: {
-          format: `{value} ${yAxisUnit}`
+          format: `{value} ${type}`
         },
         title: {
           text: ''
@@ -53,7 +47,6 @@ export function ChartLine({ type, series }) {
 
   return (
     <HighchartsReact
-      key={type}
       highcharts={Highcharts}
       options={options}
     ></HighchartsReact>

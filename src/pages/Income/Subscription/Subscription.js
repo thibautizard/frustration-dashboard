@@ -1,11 +1,19 @@
-import Panel from "../components/Panel";
+import Panel from '../components/Panel'
 import { ChartLine } from '../components/charts/chart-line'
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext } from 'react-router-dom'
+import { ChartColumn } from '../components/charts/panel-column'
+import { tidy, summarize, groupBy, sum } from '@tidyjs/tidy'
 
 export default function Subscription() {
-  let { data } = useOutletContext();
-  const type = "subscription";
-  data = data.filter((row) => row.type === type)
+  let { data } = useOutletContext()
+
+  if (data) {
+    data = data.filter((row) => row.type === 'subscription')
+    data = tidy(
+      data,
+      groupBy(['created', 'source'], [summarize({ net: sum('net') })])
+    )
+  }
 
   const series = [
     {
@@ -41,8 +49,10 @@ export default function Subscription() {
 
   return (
     <>
-      <Panel type={type} data={data} />
-      <ChartLine type={type} series={series} />
+      <Panel label="abonnements" icon="🙆‍♂️" data={data}>
+        <ChartColumn type="abonnements" data={data} />
+      </Panel>
+      <ChartLine type="abonnés" series={series} />
     </>
   )
 }

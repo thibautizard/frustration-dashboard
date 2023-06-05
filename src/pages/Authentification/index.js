@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import {
-  TextInput,
-  Button,
-  Group,
-} from "@mantine/core";
-import Popup from "../../components/Popup/Popup";
-import { useAuthentification } from "@hooks";
+import { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { TextInput, Button, Group } from '@mantine/core'
+import Popup from '../../components/Popup/Popup'
+import { useAuthentification } from '@hooks'
 
-const Authentification = styled(({className}) => {
-  const { loading, disabled, form, handleLogin } = useAuthentification();
+const Authentification = styled(({ className }) => {
+  const { loading, disabled, form, handleLogin } = useAuthentification()
 
   return (
     <Popup title="Authentification" isClosable={false} className={className}>
@@ -18,7 +14,7 @@ const Authentification = styled(({className}) => {
           name="email"
           label="Email"
           placeholder=""
-          {...form.getInputProps("email")}
+          {...form.getInputProps('email')}
         />
         <Group position="center">
           <SubmitButton
@@ -34,16 +30,16 @@ const Authentification = styled(({className}) => {
         </Group>
       </form>
     </Popup>
-  );
+  )
 })`
-position: absolute;
-left: 50%;
-top:50%;
-translate: -50% -50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
 `
 
 const SubmitButton = styled(Button)`
   margin-top: 30px;
-`;
+`
 
-export default Authentification;
+export default Authentification

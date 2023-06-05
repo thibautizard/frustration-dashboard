@@ -1,14 +1,13 @@
-import Panel from "../components/Panel";
+import Panel from '../components/Panel'
 import { ChartLine } from '../components/charts/chart-line'
-import { useOutletContext } from "react-router-dom";
-import Card from "../components/Card";
-import styled from "styled-components";
-import { useDonation } from "@hooks";
+import { useOutletContext } from 'react-router-dom'
+import Card from '../components/Card'
+import styled from 'styled-components'
+import { useDonation } from '@hooks'
 
 export default function Donation() {
-  let { data } = useOutletContext();
-  const donationInfo = useDonation()?.['0'];
-  const type = "donation";
+  let { data } = useOutletContext()
+  const donationInfo = useDonation()?.['0']
   data = data.filter((row) => row.type === type)
 
   const series = [
@@ -43,32 +42,43 @@ export default function Donation() {
     }
   ]
 
-
   return (
     <>
-      <Panel type={type} data={data} />
-      <CardsContainer>
-        <Card title="Don max"  icon="⬆︎">{donationInfo?.max}€</Card>
-        <Card title="Don min" icon="⬇︎">{donationInfo?.min}€</Card>
-        <Card title="Don moyen" icon="∑">{donationInfo?.mean}€</Card>
-        <Card title="Don médian" icon="↹">{donationInfo?.median}€</Card>
-      </CardsContainer>
-      <ChartLine type={type} series={series} />
+      {/* <Panel label="dons" icon="🙏" data={data}>
+        <ChartColumn type={type} data={data} />
+      </Panel>
+      <Cards /> */}
+      <ChartLine type="donateurs" series={series} />
     </>
   )
 }
 
-const CardsContainer = styled(({className, children}) => {
+const Cards = () => {
   return (
-    <div className={className}>
-      {children}
-    </div>
+    <CardsContainer>
+      <Card title="Don max" icon="⬆︎">
+        {donationInfo?.max}€
+      </Card>
+      <Card title="Don min" icon="⬇︎">
+        {donationInfo?.min}€
+      </Card>
+      <Card title="Don moyen" icon="∑">
+        {donationInfo?.mean}€
+      </Card>
+      <Card title="Don médian" icon="↹">
+        {donationInfo?.median}€
+      </Card>
+    </CardsContainer>
   )
-})`
-display:flex;
-gap:clamp(20px, 4vw, 30px);
-& > * {
-  flex-grow:1;
-  flex-basis: 300px;
 }
+
+const CardsContainer = styled(({ className, children }) => {
+  return <div className={className}>{children}</div>
+})`
+  display: flex;
+  gap: clamp(20px, 4vw, 30px);
+  & > * {
+    flex-grow: 1;
+    flex-basis: 300px;
+  }
 `

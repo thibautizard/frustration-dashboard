@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { Tabs } from './components/Tabs'
 import { useLocation } from 'react-router-dom'
 import { useIncome } from '@hooks'
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom'
 
 const Income = styled(({ className }) => {
   const type = useLocation().pathname.match(/[^/]+$/g)[0]
-  let { data, isLoading, error } = useIncome();
+  let { data, isLoading, error } = useIncome()
 
   if (isLoading) {
     return <div>Chargement...</div>
@@ -20,7 +20,7 @@ const Income = styled(({ className }) => {
   return (
     <div className={className}>
       <Tabs />
-      <Outlet context={{ data: data, type:type }}></Outlet>
+      <Outlet context={{ data: data, type: type }}></Outlet>
     </div>
   )
 })`

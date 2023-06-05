@@ -1,10 +1,9 @@
-import Panel from "../components/Panel";
+import Panel from '../components/Panel'
 import { ChartLine } from '../components/charts/chart-line'
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext } from 'react-router-dom'
 
 export default function Sale() {
-  let { data } = useOutletContext();
-  const type = "sale";
+  let { data } = useOutletContext()
   data = data.filter((row) => row.type === type)
 
   const series = [
@@ -26,8 +25,8 @@ export default function Sale() {
 
   return (
     <>
-      <Panel type={type} data={data} />
-      <ChartLine type={type} series={series} />
+      {/* <Panel label="ventes" icon="🗞️" data={data} /> */}
+      <ChartLine type="acheteurs" series={series} />
     </>
   )
 }

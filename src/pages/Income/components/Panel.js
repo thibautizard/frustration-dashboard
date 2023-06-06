@@ -5,9 +5,10 @@ import { getMonthEvolution, getLastMonth } from '@utils'
 
 const Panel = styled(({ className, unit, icon, data, children }) => {
   /* Variables */
+  console.log(data)
   const [i, setIndex] = useState(0)
   const { created, net, total } = data[i]
-  const { prevNet } = data[i + 1]
+  const { net: prevNet } = data[i + 1]
   const month = getLastMonth(created)
   const evolution = getMonthEvolution(net, prevNet)
   const firstPosition = 0
@@ -27,18 +28,20 @@ const Panel = styled(({ className, unit, icon, data, children }) => {
             <p>{_}</p>
           ))}
 
-        {/* <ArrowsContainer>
+        <ArrowsContainer>
           <LeftArrow
             setIndex={setIndex}
-            last_position={LAST_POSITION}
-            firstPosition={FIRST_POSITION}
+            lastPosition={lastPosition}
+            firstPosition={firstPosition}
+            i={i}
           />
           <RightArrow
             setIndex={setIndex}
-            last_position={LAST_POSITION}
-            firstPosition={FIRST_POSITION}
+            lastPosition={lastPosition}
+            firstPosition={firstPosition}
+            i={i}
           />
-        </ArrowsContainer> */}
+        </ArrowsContainer>
       </DetailsContainer>
 
       <div className="right">{children}</div>
@@ -91,14 +94,14 @@ const ArrowsContainer = styled(({ className, children }) => {
   }
 `
 
-const LeftArrow = ({ setIndex, lastPosition }) => (
+const LeftArrow = ({ setIndex, lastPosition, i }) => (
   <IoCaretBackOutline
     className={i === lastPosition ? 'disabled' : 'enabled'}
     onClick={() => setIndex((prev) => (prev < lastPosition ? prev + 1 : prev))}
   />
 )
 
-const RightArrow = ({ setIndex, firstPosition }) => (
+const RightArrow = ({ setIndex, firstPosition, i }) => (
   <IoCaretForwardOutline
     className={i === 0 ? 'disabled' : 'enabled'}
     onClick={() => setIndex((prev) => (prev > firstPosition ? prev - 1 : prev))}

@@ -4,18 +4,33 @@ import { useOutletContext } from 'react-router-dom'
 import Card from '../components/Card'
 import styled from 'styled-components'
 import { useDonation } from '@hooks'
+import { tidy, summarize, filter, groupBy, sum } from '@tidyjs/tidy'
+import { ChartColumn } from '../components/charts/panel-column'
 
 export default function Donation() {
   let { data } = useOutletContext()
   const donationInfo = useDonation()?.['0']
-  data = data.filter((row) => row.type === type)
+  let dataPanel = []
+  let dataChart = []
+  if (data) {
+    dataChart = tidy(
+      data,
+      filter((row) => row.type === 'donation'),
+      groupBy(['created', 'source'], [summarize({ net: sum('net') })])
+    )
+    dataPanel = tidy(
+      data,
+      filter((row) => row.type === 'donation'),
+      groupBy('created', [summarize({ total: sum('total'), net: sum('net') })])
+    )
+  }
 
   const series = [
     {
       name: 'HelloAsso',
       yAxis: 1,
       color: '#4AD28A',
-      data: data
+      data: dataChart
         .filter((row) => row.source === 'helloasso')
         .map((cv) => [new Date(cv.created).getTime(), cv.net]),
       tooltip: {
@@ -30,7 +45,7 @@ export default function Donation() {
       name: 'Stripe',
       yAxis: 1,
       color: '#515EE1',
-      data: data
+      data: dataChart
         .filter((row) => row.source === 'stripe')
         .map((cv) => [new Date(cv.created).getTime(), cv.net]),
       tooltip: {
@@ -44,16 +59,16 @@ export default function Donation() {
 
   return (
     <>
-      {/* <Panel label="dons" icon="🙏" data={data}>
-        <ChartColumn type={type} data={data} />
+      <Panel label="dons" icon="🙏" data={dataPanel} unit="dons">
+        <ChartColumn type="dons" data={dataPanel} />
       </Panel>
-      <Cards /> */}
+      <Cards donationInfo={donationInfo} />
       <ChartLine type="donateurs" series={series} />
     </>
   )
 }
 
-const Cards = () => {
+const Cards = ({ donationInfo }) => {
   return (
     <CardsContainer>
       <Card title="Don max" icon="⬆︎">

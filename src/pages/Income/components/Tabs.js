@@ -17,13 +17,15 @@ export const Tabs = styled(({ className }) => {
         { name: 'Total', route: 'total' },
         { name: 'Abonnements', route: 'subscription' },
         { name: 'Dons', route: 'donation' },
-        { name: 'Ventes', route: 'sale' }
+        { name: 'Ventes', route: 'sale' },
+        { name: 'Campagnes de dons 2023', route: 'donation-campaign-2023' }
       ].map((tab, index) => (
         <Chip active={index === selectedIndex}>{tab}</Chip>
       ))}
     </div>
   )
 })`
+  text-align:center;
   padding: 5px 0;
   display: flex;
   justify-content: center;

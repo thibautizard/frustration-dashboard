@@ -5,6 +5,7 @@ import Income from '@pages/Income'
 import Total from '@pages/Income/Total'
 import Subscription from '@pages/Income/Subscription'
 import Donation from '@pages/Income/Donation'
+import DonationCampaign2023 from '@pages/Income/DonationCampaign2023'
 import Sale from '@pages/Income/Sale'
 import Accueil from '@pages/Accueil/index'
 import Audiences from '@pages/Audiences/index'
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
           {
             path: 'sale',
             element: <Sale />
+          },
+          {
+            path: 'donation-campaign-2023',
+            element: <DonationCampaign2023 />
           }
         ]
       },

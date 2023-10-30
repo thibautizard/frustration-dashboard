@@ -15,10 +15,22 @@ export function useIncome() {
 }
 
 export function useDonation() {
-  let { data, isLoading, error } = useQuery({
+  let { data} = useQuery({
     queryKey: ['donation'],
     queryFn: async () => {
-      let { data, error } = await supabase.rpc('donation_info')
+      let { data } = await supabase.rpc('donation_info')
+      return data
+    }
+  })
+
+  return data
+}
+
+export function useDonationCampaign2023() {
+  let { data } = useQuery({
+    queryKey: ['donation_campaign_2023'],
+    queryFn: async () => {
+      let { data } = await supabase.rpc('donation_campaign_2023')
       return data
     }
   })

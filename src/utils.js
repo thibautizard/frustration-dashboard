@@ -16,9 +16,6 @@ export function getLastMonth(str) {
 
 export function getMonthEvolution(current, previous) {
   let evolution = ''
-  console.log(evolution)
-  console.log(current)
-  console.log(previous)
   if (previous) {
     let percent = ((current - previous) / current) * 100
     percent = Math.trunc(percent * 100) / 100

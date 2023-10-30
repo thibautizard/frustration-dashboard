@@ -1,26 +1,43 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { IoCaretBackOutline, IoCaretForwardOutline } from 'react-icons/io5'
-import { getMonthEvolution, getLastMonth } from '@utils'
 
-const Panel = styled(({ className, unit, icon, data, children }) => {
+const PanelDonation2023 = styled(({ className, unit, icon, data, children }) => {
   /* Variables */
-  const [i, setIndex] = useState(0)
-  const { created, net, total } = data[i]
-  const { net: prevNet } = data[i + 1]
-  const month = getLastMonth(created)
-  const evolution = getMonthEvolution(net, prevNet)
-  const firstPosition = 0
-  const lastPosition = data.length - 1
-  const detailsInfo = [
-    unit ? `${icon} ${total} ${unit}` : '',
-    `💸 ${net}€ nets (${evolution})`
-  ]
+  // const [i, setIndex] = useState(0)
+  // const { created, net, total } = data[i]
+  // const { net: prevNet } = data[i + 1]
+  // const month = getLastMonth(created)
+  // const evolution = getMonthEvolution(net, prevNet)
+  // const firstPosition = 0
+  // const lastPosition = data.length - 1
+  // const detailsInfo = [
+  //   unit ? `${icon} ${total} ${unit}` : '',
+  //   `💸 ${net}€ nets (${evolution})`
+  // ]
   /* Render */
   return (
     <PanelContainer className={className}>
       <DetailsContainer>
-        <Month month={month} />
+        <h4>Campagne de dons 2023</h4>
+        <br />
+        <p>Objectif : 20 000€</p>
+        <br />
+        <p>Dons perçus cet été : 1 157€</p>
+        <p>Dons récoltés depuis le début de la campagne : {data} €</p>
+        <br />
+        <p>
+          Total atteint : {data + 1157}€ (
+          {Math.round(((data + 1157) * 100) / 20000)}% de l'objectif)
+        </p>
+        <br />
+        <p>
+          Campagne lancée depuis :{' '}
+          {Math.ceil(
+            (new Date() - new Date('2023-10-29')) / (1000 * 60 * 60 * 24)
+          )} jour(s)
+        </p>
+        {/* <Month month={month} />
         {detailsInfo
           .filter((_) => _)
           .map((_) => (
@@ -40,10 +57,10 @@ const Panel = styled(({ className, unit, icon, data, children }) => {
             firstPosition={firstPosition}
             i={i}
           />
-        </ArrowsContainer>
+        </ArrowsContainer> */}
       </DetailsContainer>
 
-      <div className="right">{children}</div>
+      {/* <div className="right">{children}</div> */}
     </PanelContainer>
   )
 })`
@@ -64,6 +81,10 @@ const DetailsContainer = styled(({ className, children }) => {
   return <div className={className}>{children}</div>
 })`
   padding: 10px 20px;
+
+  h4 {
+    font-size: 30px;
+  }
 `
 
 const Month = styled(({ className, month }) => {
@@ -107,4 +128,4 @@ const RightArrow = ({ setIndex, firstPosition, i }) => (
   />
 )
 
-export default Panel
+export default PanelDonation2023

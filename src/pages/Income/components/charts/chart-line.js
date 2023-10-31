@@ -2,16 +2,21 @@ import HighchartsReact from 'highcharts-react-official'
 import Highcharts from '@config/highcharts.config'
 import { events } from './events'
 
-export function ChartLine({ type, series, period='month' }) {
+export function ChartLine({ type, series, period }) {
 
   let dateFormat;
 
   switch(period) {
     case 'month':
       dateFormat = '{value: %b %Y}';
+      break;
     case 'day':
-      dateFormat = '{value: %e/%m}'
+      dateFormat = '{value: %e/%m}';
+      break;
   }
+
+  console.log(period)
+  console.log(dateFormat)
 
 
   const options = {

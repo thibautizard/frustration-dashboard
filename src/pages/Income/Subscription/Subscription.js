@@ -58,7 +58,7 @@ export default function Subscription() {
       <Panel label="abonnements" icon="🙆‍♂️" data={dataPanel} unit="abonnements">
         <ChartColumn type="abonnements" data={dataPanel} />
       </Panel>
-      <ChartLine type="abonnés" series={series} />
+      <ChartLine type="abonnés" series={series} period="month" />
     </>
   )
 }

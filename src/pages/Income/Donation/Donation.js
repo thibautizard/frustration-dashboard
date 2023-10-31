@@ -63,7 +63,7 @@ export default function Donation() {
         <ChartColumn type="dons" data={dataPanel} />
       </Panel>
       <Cards donationInfo={donationInfo} />
-      <ChartLine type="donateurs" series={series} />
+      <ChartLine type="donateurs" series={series} period="month"/>
     </>
   )
 }

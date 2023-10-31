@@ -46,7 +46,7 @@ const Total = styled(({ className }) => {
       <Panel data={dataPanel}>
         <ChartColumn type="total" data={dataPanel} />
       </Panel>
-      <ChartLine type="total" series={series} />
+      <ChartLine type="total" series={series} period="month" />
       <Solde balanceInfo={balanceInfo} isLoading={isLoading} />
     </>
   )

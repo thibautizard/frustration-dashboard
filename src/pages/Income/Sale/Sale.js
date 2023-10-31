@@ -43,7 +43,7 @@ export default function Sale() {
       <Panel label="ventes" icon="🗞️" data={dataPanel} unit="ventes">
         <ChartColumn type="ventes" data={dataPanel} />
       </Panel>
-      <ChartLine type="acheteurs" series={series} />
+      <ChartLine type="acheteurs" series={series} period="month" />
     </>
   )
 }

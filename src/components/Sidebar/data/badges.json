@@ -1,0 +1,22 @@
+[
+    {
+        "userId": "0ec52cb1-dbe2-49f8-a5be-38b99eac0774",
+        "name": "Thibaut",
+        "role": "Admin"
+    },
+    {
+      "userId": "b8a9f3e5-368f-488d-8512-19c69fe77103",
+      "name": "Nicolas",
+      "role": "Admin"
+    },
+    {
+      "userId": "1a122bbb-2cd6-438e-a07e-a67e49adffd9",
+      "name": "Rob",
+      "role": "Admin"
+    },
+    {
+      "userId": "default",
+      "name": "Rédaction",
+      "role": "Admin"
+    }
+]

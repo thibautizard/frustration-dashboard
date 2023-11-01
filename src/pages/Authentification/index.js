@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { TextInput, Button, Group } from '@mantine/core'
-import Popup from '../../components/Popup/Popup'
 import { useAuthentification } from '@hooks'
+import { Popup } from '@components/Popup'
+import { TextInput, Button, Group } from '@mantine/core'
 
 const Authentification = styled(({ className }) => {
   const { loading, disabled, form, handleLogin } = useAuthentification()

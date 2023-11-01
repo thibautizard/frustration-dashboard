@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { FaExclamationCircle as IconExclamation } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Header = styled(({ className }) => (
+export const Header = styled(({ className }) => (
   <header className={className}>
     <Title>Frustration Dashboard</Title>
-    <Version>0.1</Version>
-    <Avertissement />
+    <Avertissement>Expérimental</Avertissement>
   </header>
 ))`
   background-color: #000000;
@@ -29,7 +28,6 @@ const Title = styled(({ className, children }) => (
   font-size: clamp(12px, 3.5vw, 70px);
   font-family: Bebas Neue;
   text-transform: uppercase;
-
   position: relative;
 `;
 
@@ -39,10 +37,10 @@ const Version = styled(({ className, children }) => <small className={className}
   text-transform: lowercase;
 `;
 
-const Avertissement = styled(({ className }) => (
+const Avertissement = styled(({ className, children }) => (
   <div className={className}>
     <IconExclamation />
-    Expérimental
+    {children}
   </div>
 ))`
   position: absolute;
@@ -57,5 +55,3 @@ const Avertissement = styled(({ className }) => (
   gap: 10px;
   font-size: clamp(10px, 1vw, 20px);
 `;
-
-export default Header;

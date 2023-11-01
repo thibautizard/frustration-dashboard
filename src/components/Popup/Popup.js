@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Box } from "@mantine/core";
 import { FaTimes as CrossIcon } from "react-icons/fa";
 
-const Popup = styled(
+export const Popup = styled(
   ({ children, className, title = "Titre", isClosable = true }) => {
     const boxEl = useRef(null);
 

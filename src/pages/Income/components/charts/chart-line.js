@@ -3,21 +3,16 @@ import Highcharts from '@config/highcharts.config'
 import { events } from './events'
 
 export function ChartLine({ type, series, period }) {
+  let dateFormat
 
-  let dateFormat;
-
-  switch(period) {
+  switch (period) {
     case 'month':
-      dateFormat = '{value: %b %Y}';
-      break;
+      dateFormat = '{value: %b %Y}'
+      break
     case 'day':
-      dateFormat = '{value: %e/%m}';
-      break;
+      dateFormat = '{value: %e/%m}'
+      break
   }
-
-  console.log(period)
-  console.log(dateFormat)
-
 
   const options = {
     chart: {

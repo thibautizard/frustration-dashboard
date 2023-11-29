@@ -5,15 +5,12 @@ import { ChartColumn } from '../components/charts/panel-column'
 
 export default function DonationCampaign2023() {
   const data = useDonationCampaign2023()
-  let dataChart = [];
-  let dataPanel = [];
+  let dataChart = []
+  let dataPanel = []
   if (data) {
     dataChart = data
     dataPanel = data.reduce((acc, cv) => acc + cv.net, 0)
   }
-  console.log(dataChart)
-  console.log(dataPanel)
-
   const series = [
     {
       name: 'Total quotidien',
@@ -56,7 +53,7 @@ export default function DonationCampaign2023() {
       <PanelDonation2023 label="dons" icon="🙏" data={dataPanel} unit="dons">
         {/* <ChartColumn type="dons" data={dataPanel} /> */}
       </PanelDonation2023>
-      <ChartLine type="donateurs" series={series} period='day' />
+      <ChartLine type="donateurs" series={series} period="day" />
     </>
   )
 }

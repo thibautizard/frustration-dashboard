@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start webpack --config webpack.config.js",
-    "develop": "webpack-dev-server --mode development",
+    "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",

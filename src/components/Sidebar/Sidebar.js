@@ -1,18 +1,17 @@
-import styled from 'styled-components';
-import menus from './data/menus.json';
-import { useSession } from '@hooks';
-import { useLastUpdate } from './hooks/use-last-update';
-import { retrieveUserBadge } from './utils/sidebar-utils';
-import { Badge } from '@components/badge';
-import { Menus, Menu } from './components/Menu';
+import styled from 'styled-components'
+import menus from './data/menus.json'
+import { useSession } from '@hooks'
+import { useLastUpdate } from './hooks/use-last-update'
+import { retrieveUserBadge } from './utils/sidebar-utils'
+import { Badge } from '@components/Badge'
+import { Menus, Menu } from './components/Menu'
 
 export const Sidebar = styled(({ className }) => {
+  const { lastUpdate, isLoadingLastUpdate } = useLastUpdate()
 
-  const { lastUpdate, isLoadingLastUpdate } = useLastUpdate();
-
-  const session = useSession();
-  const selectedUserId = session?.user.id;
-  const { name, role, userId } = retrieveUserBadge(selectedUserId);
+  const session = useSession()
+  const selectedUserId = session?.user.id
+  const { name, role, userId } = retrieveUserBadge(selectedUserId)
 
   return (
     <aside className={className}>
@@ -26,8 +25,7 @@ export const Sidebar = styled(({ className }) => {
         <Badge
           name={name}
           role={role}
-          imageUrl={require(`../../img/profile/${userId}.jpg`)
-          }
+          imageUrl={require(`../../img/profile/${userId}.jpg`)}
         />
       </BadgeContainer>
     </aside>
@@ -79,10 +77,8 @@ const UpdateNotification = styled(({ className, date }) => {
   line-height: 100%;
 `
 
-const BadgeContainer = styled(({className, children}) => (
-  <div className={className}>
-    {children}
-  </div>
+const BadgeContainer = styled(({ className, children }) => (
+  <div className={className}>{children}</div>
 ))`
   margin-top: auto;
 `
